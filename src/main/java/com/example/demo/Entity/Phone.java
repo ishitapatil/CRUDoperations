@@ -58,7 +58,4 @@ public class Phone {
 	public void setNumber(long number) {
 		this.number = number;
 	}
-	
-	
-
 }
