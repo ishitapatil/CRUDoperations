@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.Controller;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Phone;
+import com.example.demo.Entity.Person;
+import com.example.demo.Entity.Phone;
+import com.example.demo.Repository.PersonRepository;
+import com.example.demo.Repository.PhoneRepository;
 import com.example.demo.Service.PersonService;
 import com.example.demo.Service.PhoneService;
-import com.example.demo.model.Person;
-import com.example.demo.repository.PersonRepository;
-import com.example.demo.repository.PhoneRepository;
 
 @RestController
 public class PersonController {

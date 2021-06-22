@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.Entity;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.example.demo.model.Phone;
+import com.example.demo.Entity.Phone;
 
 @Entity
 @Table(name = "person")

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Person;
-import com.example.demo.model.Phone;
-import com.example.demo.repository.PersonRepository;
-import com.example.demo.repository.PhoneRepository;
+import com.example.demo.Entity.Person;
+import com.example.demo.Entity.Phone;
+import com.example.demo.Repository.PersonRepository;
+import com.example.demo.Repository.PhoneRepository;
 @Service
 public class PersonService {
 	@Autowired
