@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.Entity.Phone;
+import com.example.demo.Model.Phone;
 
 @Repository
 public interface PhoneRepository extends JpaRepository<Phone, Serializable> {
