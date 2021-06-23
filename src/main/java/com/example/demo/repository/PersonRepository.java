@@ -9,7 +9,8 @@ import com.example.demo.Entity.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
-	List<Person> findAll();
+
+	  List<Person> findAll();
 	  Person findById(long id);
 	  Person save(Person p);
 }
