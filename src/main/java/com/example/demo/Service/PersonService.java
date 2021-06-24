@@ -1,17 +1,22 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.demo.Model.Person;
+import com.example.demo.entity.Person;
 
 @Component
 public interface PersonService {
-	
-	public Person save(Person person);
-	public Person update(Person person);
-	public Person get(Integer id);
-	public void delete(Person person);
-	public List<Person> getAllPerson();
+
+	Person save(Person person);
+
+	Person update(Person person);
+
+	Person get(long id);
+
+	void delete(Person person);
+
+	List<Person> getAllPerson();
+
 }
