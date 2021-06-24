@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "person")
-public class Person {
+public class PersonEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +27,6 @@ public class Person {
 
 	@Column(name = "lastName")
 	private String lastName;
-
-	@Transient
-	private List<Phone> phones;
 
 	public long getId() {
 		return id;
@@ -51,11 +52,15 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public List<Phone> getPhones() {
+	public List<PhoneEntity> getPhones() {
 		return phones;
 	}
 
-	public void setPhones(List<Phone> phones) {
+	public void setPhones(List<PhoneEntity> phones) {
 		this.phones = phones;
 	}
+
+//	@OneToMany(mappedBy = "person",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	@Transient
+	List<PhoneEntity> phones = new ArrayList<>();
 }

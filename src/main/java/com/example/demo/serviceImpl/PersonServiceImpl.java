@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Person;
+import com.example.demo.entity.PersonEntity;
 import com.example.demo.repository.PersonRepository;
 import com.example.demo.service.PersonService;
 
@@ -20,41 +20,40 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	@Transactional
-	public Person save(Person person) {
-		Person createResponse = personRepository.save(person);
+	public PersonEntity save(PersonEntity person) {
+		PersonEntity createResponse = personRepository.save(person);
 		return createResponse;
 	}
 
 	@Override
 	@Transactional
-	public Person update(Person person) {
-		Person updateResponse = personRepository.save(person);
+	public PersonEntity update(PersonEntity person) {
+		PersonEntity updateResponse = personRepository.save(person);
 		return updateResponse;
 	}
 
 	@Transactional
-	public Person get(Long id) {
-		Optional<Person> personResponse = personRepository.findById(id);
-		Person getResponse = personResponse.get();
+	public PersonEntity get(Long id) {
+		Optional<PersonEntity> personResponse = personRepository.findById(id);
+		PersonEntity getResponse = personResponse.get();
 		return getResponse;
 	}
 
 	@Override
 	@Transactional
-	public void delete(Person person) {
+	public void delete(PersonEntity person) {
 		personRepository.delete(person);
 	}
 
 	@Override
 	@Transactional
-	public List<Person> getAllPerson() {
+	public List<PersonEntity> getAllPerson() {
 		return personRepository.findAll();
 	}
 
 	@Override
-	public Person get(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public PersonEntity get(long id) {
+		return personRepository.findById(id);
 	}
 
 }

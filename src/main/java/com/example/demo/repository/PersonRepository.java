@@ -5,17 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.Person;
+import com.example.demo.entity.PersonEntity;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
 	@Override
-	List<Person> findAll();
+	List<PersonEntity> findAll();
 
-	Person findById(long id);
-
-	@Override
-	Person save(Person p);
-
+	PersonEntity findById(long id);
 }

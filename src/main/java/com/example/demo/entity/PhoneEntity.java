@@ -2,19 +2,14 @@ package com.example.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "phone")
-public class Phone {
+public class PhoneEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int phoneId;
-
 	@Column(name = "number")
 	private String number;
 
@@ -24,12 +19,12 @@ public class Phone {
 	@Column(name = "personId")
 	private long personId;
 
-	public int getPhoneId() {
-		return phoneId;
+	public long getPersonId() {
+		return personId;
 	}
 
-	public void setPhoneId(int phoneId) {
-		this.phoneId = phoneId;
+	public void setPersonId(long personId) {
+		this.personId = personId;
 	}
 
 	public String getNumber() {
@@ -48,11 +43,4 @@ public class Phone {
 		this.type = type;
 	}
 
-	public long getPersonId() {
-		return personId;
-	}
-
-	public void setPersonId(long personId) {
-		this.personId = personId;
-	}
 }
