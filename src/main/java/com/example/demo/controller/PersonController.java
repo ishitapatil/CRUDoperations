@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +37,7 @@ public class PersonController {
 	@Autowired
 	ObjectMapperUtils mapper;
 
-	@GetMapping("/persons")
+	@GetMapping("/people")
 	public List<Person> getAllPersons() {
 		List<PersonEntity> entities = personService.getAllPerson();
 
@@ -52,7 +53,21 @@ public class PersonController {
 		return persons;
 	}
 
-	@PostMapping("/persons")
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/people/{id}")
+	public ResponseEntity<Person> getPerson(@PathVariable(name = "id") long id) {
+		PersonEntity personEntity = personService.get(id);
+		if (personEntity != null) {
+			personEntity.setPhones(phoneService.findAllByPersonId(personEntity.getId()));
+			Person person = mapper.map(personEntity, Person.class);
+			return new ResponseEntity<Person>(person, HttpStatus.OK);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@CrossOrigin(origins = "http://localhost:3000")
+	@PostMapping("/people")
 	public ResponseEntity<Person> addPerson(@RequestBody Person person) {
 		PersonEntity personRequest = mapper.map(person, PersonEntity.class);
 		PersonEntity createResponse = personService.save(personRequest);
@@ -65,7 +80,8 @@ public class PersonController {
 		return new ResponseEntity<Person>(createdPerson, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/persons")
+	@CrossOrigin(origins = "http://localhost:3000")
+	@PutMapping("/people")
 	public ResponseEntity<Person> updatePerson(@RequestBody Person person) {
 		PersonEntity exisitingPerson = personService.get(person.getId());
 		if (exisitingPerson == null) {
@@ -86,7 +102,7 @@ public class PersonController {
 
 	}
 
-	@DeleteMapping("/persons/{id}")
+	@DeleteMapping("/people/{id}")
 	public HttpStatus deletePerson(@PathVariable(name = "id") long id) {
 		PersonEntity personEntity = personService.get(id);
 		if (personEntity == null) {
