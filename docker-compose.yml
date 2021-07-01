@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+    crudops_spring:
+        container_name: crudops_spring
+        build:
+            context: .
+            dockerfile: Dockerfile
+        
+        ports:
+        - 8081:8081
+        networks: 
+            - default
+
+
+    crudops_react:
+        depends_on: 
+            - crudops_spring
+        container_name: crudops_react
+        build:
+            context: .
+            dockerfile: Dockerfile_react
+        volumes:
+        - '.:/app'
+        - '/app/node_modules'
+        ports:
+        - 3000:3000
+        links: 
+            - crudops_spring:crudapp
+        networks: 
+            - default
+networks:
+    default:
+        
